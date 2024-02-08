@@ -286,6 +286,13 @@
 - useReducer
   - 상태를 다루기위한 또 하나의 훅
   - 복잡한 상태 전이를 간단하게 기술 할 수 있음
+  - Reducer, Dispatch, Action 3가지로 이뤄짐
+    - Reducer: State를 업데이트 해줌
+    - Dispatch: 요구하는 것
+    - Action: 요구의 내용
+    - Dispatch(Action) --> Reducer(State, Action) --> State Update
+  - state 바뀔때마다 리랜더링함
+  - reducer는 전달받은 action으로만 동작. action에 if 또는 switch문이 들어감
   - 또한 배열아나 객체 등의 여러 데이터를 모은 것을 상태로 다루는 경우 많이 사용
   - useState는 업데이트 함수에 다음 상태를 직접 전달했지만, useReducer에서는 업데이트 함수(dispatch)에 action이라는 데이터를 전달
   - useReducer()의 반환값 배열의 첫 번째는 현재 상태, 두 번째는 dispatcher 함수
