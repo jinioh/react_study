@@ -23,3 +23,23 @@ const Buzz = memo<BuzzProps>((props) => {
         </span>
     )
 })
+
+export const Parent = () => {
+    const [count, setCount] = useState(1);
+    const isFizz = count % 3 === 0;
+    const isBuzz = count % 5 === 0;
+
+    console.log('parent render');
+    return (
+        <div>
+            <button onClick={() => setCount((c) => c+1)}>+1</button>
+            <p>{`현재 카운트 ${count}`}</p>
+            <p>
+                <Fizz isFizz={isFizz} />
+                <Buzz isBuzz={isBuzz} />
+            </p>
+        </div>
+    );
+}
+
+export default Parent;
