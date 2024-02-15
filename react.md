@@ -374,6 +374,8 @@
 
 ### useContext - Context를 위한 훅
 - useContext
+  - Context로부터 값을 참조하기 위한 훅
+  - useContext 인수에 Context를 전달함으로써, 해당 Context 값을 얻을 수 있음
   - 전역적인 데이터를 props로 전달하면 힘들 수 있음
     - Prop Drilling
   - 상위에서 사용하고 싶은 하위 컴포넌트에 방송해 줄 수 있음
@@ -382,6 +384,14 @@
     - Prop Drilling을 피하기 위한 목적이라면 Component Composition을 먼저 고려
 
 ### useRef와 useImpreativeHandle - ref 훅
+- useRef는 ref 객체를 작성함
+- ref는 커게 2가지 방법으로 사용할 수 있음
+  - 데이터 저장
+  - DOM 참조
+- 함수 컴포넌트 안에서 데이터를 저장하기 위해서는 useState나 useReducer가 있지만, 이들은 상태를 업데이트할 때 화면을 다시 그리게 됨
+- ref 객체에 저장된 값은 업데이트되더라도 화면을 다시 그리지 않음
+  - 그러므로 화면 그리기와 관계없는 데이터를 저장할 때 사용
+- DOM참조는 ref는 컴포넌트에 전달하면, 이 요소가 마운트될 때, ref.current에 DOM 참조가 설정되어, DOM 함수등을 호출할 수 있음
 - useRef(value)
   - ref 오브젝트를 반환 {current: value}
   - unmout 될 때 까지 값을 유지할 수 있음
