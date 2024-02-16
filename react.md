@@ -492,4 +492,21 @@
 - paths의 각요소에 대해 getStaticProps가 호출되고 페이지가 생성됨
 - getStaticProps에는 context인 params로부터 경로 파라미터를 참조할 수 있음
 - GetStaticPaths에서 fallback을 false로 설정하면 paths에 정의된 페이지 외에는 404를 표시함
+- fallback에 true를 지정하면, 가장 첫 번째 방문한 사용자에 대해서는 폴백 페이지를 처음에 표시함
+- 서버사이드에서는 요청의 경로에 대해 getStaticProps를 실행함
+- getStaticProps가 반환한 props는 페이지를 표시하고 있는 클라이언트에 전송되고 화면을 그림
+- 서버 사이드에서 props를 기반으로 페이지를 그리고 그 결과를 저장, 그 뒤 동일한 경로에 대한 요청이 오면 저장했던 페이지를 반환
+
+### SSR을 통한 페이지 구현
+- SSG에서는 페이지를 그리기 전 getServerSideProps를 호출하며, 이 함수가 반환한 props를 기반으로 페이지를 그림
+- getServerSideProps의 인수인 context에는 getStaticProps의 context에서 참조할 수 있는 데이터와 함께, 요청 정보 등을 참조할 수 있음
+  - req: http.IncomingMessage의 인스턴스에서 요청 정보나 쿠키를 참조
+  - res: http.ServerResponse의 인스턴스에서 쿠키를 설정하거나, 응답 헤더를 치호나할 때 사용
+  - resolvedUrl: 실제 접근이 있던 경로
+  - query: 해당 쿼리를 객체로 만든 것
+
+### ISR을 통한 페이지 구현
+- getStaticProps에서 revalidate를 반환하면 그 값이 유효기간이 도며, 유효 기간이 지난 페이지는 재생성됨
+
+
 
